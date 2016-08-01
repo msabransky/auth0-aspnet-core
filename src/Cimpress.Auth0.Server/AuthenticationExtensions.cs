@@ -115,7 +115,8 @@ namespace Cimpress.Auth0.Server
             {
                 Audience = settings.ClientId,
                 Authority = $"https://{settings.Domain}",
-                Events = new JwtBearerEvents
+                Challenge = $"Bearer realm=\"{settings.Domain}\", scope=\"client_id={settings.ClientId} service=\"",
+            Events = new JwtBearerEvents
                 {
                     OnAuthenticationFailed = context =>
                     {
